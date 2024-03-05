@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trashform Shop</title>
+    <link rel="stylesheet" href="metalScrap.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            font-family: "Poppins";
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+
+        .home-upper-nav {
+            border: 1px solid #E1F2CD;
+            background-color: #E1F2CD;
+            text-align: center;
+            margin-right: 0;
+            margin-left: 0;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .home-upper-nav h6 {
+            margin: 0;
+            font-size: large;
+            font-weight: 400;
+            color: black;
+        }
+
+        .home-lower-nav {
+            border: 1px solid transparent;
+            background-color: white;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .home-lower-nav-img {
+            margin-left: 10px;
+            float: left;
+            margin-right: 100px;
+        }
+
+        .home-nav-links:hover {
+            text-decoration: none;
+        }
+
+        .home-nav-links a {
+            border: 1px solid transparent;
+            color: black;
+            text-decoration: none;
+            font-size: large;
+            font-weight: 800;
+        }
+
+        .shop-dropdown,
+        .sell,
+        .about {
+            margin-right: 100px;
+        }
+
+        .dropdown-content-shop button,
+        .dropdown-content-trash,
+        .dropdown-content-creations {
+            margin: auto;
+            width: max-content;
+        }
+
+        .dropdown-content-shop button,
+        .dropdown-content-trash,
+        .dropdown-content-creations {
+            display: block;
+        }
+
+        .dropdown-content-shop,
+        .dropdown-content-trash,
+        .dropdown-content-creations {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        #trash,
+        #creations {
+            border: none;
+            background-color: #f9f9f9;
+            font-size: large;
+            font-weight: 800;
+        }
+
+        .dropdown-content-shop button,
+        .dropdown-content-trash a,
+        .dropdown-content-creations a {
+            padding: 12px 16px;
+            display: block;
+        }
+
+
+        .dropdown-content-shop #trash:hover,
+        .dropdown-content-shop #creations:hover,
+        .dropdown-content-trash a:hover,
+        .dropdown-content-creations a:hover {
+            background-color: #E1F2CD;
+        }
+
+        .search_container {
+            flex-grow: 1;
+            margin-left: 400px;
+        }
+
+        .search_container form {
+            display: inline;
+        }
+
+        .search_container input[type="text"] {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-right: 15px;
+            margin-left: 10px;
+            width: 400px;
+            background-color: #f2f2f2;
+        }
+
+        .search_container button {
+            width: 85px;
+            height: 35px;
+            padding: 8px 15px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 1px;
+            margin-right: 10px;
+        }
+
+        .user-profile img {
+            width: 33px;
+            height: auto;
+            float: right;
+            margin-right: 10px;
+        }
+
+        .product {
+            display: flex;
+            margin: 50px;
+        }
+
+        .product h1 {
+            font-size: 50px;
+        }
+
+        .price {
+            font-size: 25px;
+            font-weight: 500;
+        }
+
+        .product img {
+            width: 500px;
+            height: 500px;
+            margin-right: 50px;
+        }
+
+        .product button {
+            background-color: #7fa059;
+            border: 1px solid #7fa059;
+            width: 150px;
+            height: 40px;
+            font-size: large;
+            font-weight: 500;
+            color: white;
+        }
+
+        .product button:hover {
+            background-color: #688c47;
+        }
+
+        .product a {
+            text-decoration: none;
+        }
+
+        .similar-products {
+            background-color: #E1F2CD;
+        }
+
+        .similar-products h1 {
+            text-align: center;
+            font-size: 40px;
+            font-weight: 400;
+            padding: 30px;
+            margin-bottom: 0;
+        }
+
+        .container {
+            display: flex;
+            padding: 20px;
+            padding-top: 0;
+            padding-bottom: 30px;
+        }
+
+        .items img {
+            width: 300px;
+            height: 300px;
+        }
+
+        .items {
+            text-align: center;
+            width: 18%;
+            display: inline-block;
+            padding: 4px;
+            margin: 9px;
+            line-height: 10px;
+            background-color: rgb(255, 255, 255);
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            float: none;
+        }
+
+        .items a {
+            color: black;
+            text-decoration: none;
+            font-size: smaller;
+        }
+
+        .items a:hover {
+            color: tomato;
+            text-decoration: none;
+            font-size: smaller;
+        }
+
+        .caption h2 {
+            margin-left: 10px;
+            text-align: left;
+            font-weight: 500;
+        }
+
+        .rupees {
+            border: 1px solid black;
+            width: max-content;
+            padding: 10px;
+        }
+
+        .footer-nav ul li {
+            list-style-type: none;
+            display: inline-block;
+        }
+
+        .lower-footer {
+            margin-top: 30px;
+            margin-left: 30px;
+            margin-right: 30px;
+            color: #7d7d7d;
+        }
+
+        .contact-info p {
+            display: inline-block;
+        }
+
+        .phone {
+            float: right;
+        }
+
+        .footer-content p {
+            display: inline-block;
+        }
+
+        .social-links a {
+            text-decoration: none;
+            color: #7d7d7d;
+            font-weight: 400;
+        }
+
+        .facebook,
+        .twitter {
+            margin-right: 50px;
+        }
+
+        .instagram {
+            margin-right: 1217px;
+        }
+
+        .social-links a:hover {
+            text-decoration: none;
+            color: black;
+            background-color: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="home-upper-nav">
+        <h6>Find unique recycled materials for your art<h6>
+    </div>
+    <div>
+        <nav class="home-lower-nav">
+            <a href="Home.html"><img src="Trashform images/TRASHFORM.png" class="home-lower-nav-img"
+                    alt="TrashForm logo"></a>
+            <span class="home-nav-links">
+                <a href="#" class="shop-dropdown" id="shopDropdown">Shop</a>
+                <div id="dropdownContentShop" class="dropdown-content-shop">
+                    <button id="trash">Trash
+                        <div class="dropdown-content-trash" id="dropdownContentTrash">
+                            <a href="metal.html">Metal</a>
+                            <a href="OldCloth.html">Old clothes</a>
+                            <a href="glass.html">Glass</a>
+                        </div>
+                    </button>
+                    <button id="creations">Creations
+                        <div class="dropdown-content-creations" id="dropdownContentCreations">
+                            <a href="homedecor.html">Home Decor</a>
+                            <a href="lamps.html">Lamps</a>
+                            <a href="fashion.html">Fashion</a>
+                            <a href="shelfs.html">Shelfs</a>
+                        </div>
+                    </button>
+                </div>
+                <a href="userProfile.html" class="sell">Sell</a>
+                <a href="About.html" class="about">About</a>
+            </span>
+            <span class="search_container">
+                <form action="/search" method="GET">
+                    <input type="text" name="query" placeholder="Search for recycled materials, artists...">
+                    <button type="submit">Search</button>
+                </form>
+            </span>
+            <span class="user-profile">
+                <a href="userProfile.html"><img src="Trashform images/user-solid.svg" alt="User Profile"><i
+                        class="fa-solid fa-user" style="color: #000000;"></i></a>
+            </span>
+    </div>
+    </nav>
+
+    <main>
+        <section class="product">
+            <div>
+                <img src="Trashform images/recycled broken glass mosaic.jpg" alt="">
+            </div>
+            <div>
+                <h1>Broken Glass Mosaic Frame</h1>
+                <p class="price">Price: &#8377; 500</p>
+                <p>Embrace vibrant beauty and sustainability with this unique glass mosaic frame, handcrafted from
+                    reclaimed broken glass. Each piece is meticulously arranged to create a one-of-a-kind masterpiece,
+                    adding a touch of sparkling personality to your cherished photos or artwork.</p>
+                <p><b>Contact Details:</b></p>
+                <p><b>Profile: <a href="mahesh.html">maheshgupta896</a></b></p>
+                <p><b>Name:</b> Mahesh Gupta</p>
+                <p><b>Phone:</b> +91 80 85331532 </p>
+                <p><b>Email:</b> maheshgupta896@gmail.com</p>
+            </div>
+        </section>
+
+        <section class="similar-products">
+            <h1>Similar Products</h1>
+            <div class="container">
+                <div class="items">
+                    <a href="pillow.html"><img src="Trashform images/Pillow made from recycled jeans.jpg" alt="">
+                        <div class="caption">
+                            <h2>Recycled Jeans Pillow</h2>
+                            <h2 class="rupees">&#8377; 1000</h2>
+                        </div>
+                    </a>
+                </div>
+                <div class="items">
+                    <a href="plasticBag.html"><img src="Trashform images/recycled bag.jpg" alt="">
+                        <div class="caption">
+                            <h2>Wooden Key Hanger</h2>
+                            <h2 class="rupees">&#8377; 150</h2>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="lower-footer">
+        <div class="contact-info">
+            <p class="email">Email: TrashForm@gmail.com</p>
+            <p class="phone">Phone: +1234567890</p>
+        </div>
+        <div class="footer-content">
+            <span class="social-links">
+                <a href="#" class="facebook">Facebook</a>
+                <a href="#" class="twitter">Twitter</a>
+                <a href="#" class="instagram">Instagram</a>
+            </span>
+            <span class="copyright">
+                <p>&copy; 2024 TrashForm. All rights reserved.</p>
+            </span>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var shopDropdown = document.getElementById("shopDropdown");
+            var dropdownContentShop = document.getElementById("dropdownContentShop");
+            var dropdownContentTrash = document.getElementById("dropdownContentTrash");
+            var dropdownContentCreations = document.getElementById("dropdownContentCreations");
+
+            shopDropdown.addEventListener("click", function (event) {
+                event.stopPropagation();
+                if (dropdownContentShop.style.display === "block") {
+                    dropdownContentShop.style.display = "none";
+                } else {
+                    dropdownContentShop.style.display = "block";
+                }
+            });
+
+            var trash = document.getElementById("trash");
+            var creations = document.getElementById("creations");
+
+            trash.addEventListener("click", function (event) {
+                event.stopPropagation();
+                if (dropdownContentTrash.style.display === "block") {
+                    dropdownContentTrash.style.display = "none";
+                } else {
+                    dropdownContentTrash.style.display = "block";
+                }
+            });
+
+            creations.addEventListener("click", function (event) {
+                event.stopPropagation();
+                if (dropdownContentCreations.style.display === "block") {
+                    dropdownContentCreations.style.display = "none";
+                } else {
+                    dropdownContentCreations.style.display = "block";
+                }
+            });
+
+            window.addEventListener("click", function (event) {
+                dropdownContentShop.style.display = "none";
+                dropdownContentTrash.style.display = "none";
+                dropdownContentCreations.style.display = "none";
+            });
+            const addToCartButton = document.querySelector('button');
+            addToCartButton.addEventListener('click', function () {
+                console.log('Product added to cart!');
+            });
+        });
+    </script>
+</body>
+
+</html>
